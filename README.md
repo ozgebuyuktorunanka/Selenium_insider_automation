@@ -1,42 +1,69 @@
-# Insider Automation Project
+# Insider Website UI Test Automation
 
-# Overview 
-This project is an automation tool designed for Insider using Python, Pytest and Selenium. 
+This project automates UI testing for the [Insider website](https://useinsider.com) using **Selenium WebDriver** and **Pytest**. It follows the **Page Object Model (POM)** design pattern to ensure clean and maintainable test code.
 
-# Technologies Used
+---
 
-* **Python:** The programming language used for automation scripts.
-* **Pytest:** A testing framework for writing and running automated tests.
-* **Selenium:** A powerful library for automating web browsers.
-
-# Installation 
-
-Clone the repository: 
-```git clone```
-
-Navigate to the project directory: 
-```cd```
-
-Install the required packages: 
-```pip install -r requirements.txt```
-
-# Usage
-## For Test runner write this in terminal:
-in tests folder:
-
-```pytest -v test_insider.py```   <----- If this test file does not worked, try this ---> pytest -v test_insider2.py
-
-# Project Structure
-project_root/
-├── tests/
-│   └── driver.py
-├── pages/
-│   ├── careerpage.py
-│   └── homepage.py
-├── test_insider.py
-└── ... other project files
+## 📌 Project Structure
+        project/
+        │
+        ├── pages/
+        │   └── homepage.py
+        ├── tests/
+        │   └── test_homepage.py
+        ├── conftest.py       # Optional shared fixtures
+        └── requirements.txt
 
 
+---
 
-Github Repo ;
-URL :
+## ✅ Features
+
+- Open the Insider homepage and verify the page title
+- Accept cookie consent (if present)
+- Click the "Company" tab in the top navigation
+- Verify the visibility of the "Careers" link
+
+---
+
+## 🛠️ Requirements
+
+- Python 3.7+
+- Google Chrome
+- ChromeDriver (compatible with your Chrome version)
+
+---
+
+## 📦 Installation
+
+1. **Clone the repository**:
+
+   ```bash
+   git clone https://github.com/your-username/insider-ui-tests.git
+   cd insider-ui-tests
+
+2. Create a virtual environment (optional but recommended):
+   ```bash
+    python -m venv venv
+    source venv/bin/activate  
+    # On Windows: venv\Scripts\activate ```
+
+3. Install dependencies:
+    ```pip install -r requirements.txt```
+    
+## 🧪 Running the Tests
+- To run all tests:
+ ```pytest tests/ ```
+ - To run a specific test file: 
+ ```pytest tests/test_homepage.py ```
+ - To see detailed logs and output
+ ```pytest -v -s ```
+
+## 🧹 Teardown
+- Each test automatically closes the browser instance after execution using a pytest fixture.
+
+## 🚀 Future Improvements
+- Integrate with Jenkins for CI/CD
+- Add HTML report generation (e.g., with pytest-html)
+-Extend tests for "Careers" page validation
+Add tests for mobile responsiveness with Selenium Grid

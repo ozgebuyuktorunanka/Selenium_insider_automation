@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import logging
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -38,4 +39,38 @@ class HomePage(object):
             EC.presence_of_element_located(
                 (By.XPATH, "//a[normalize-space()='Careers']")
             )
+=======
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
+class HomePage:
+    def __init__(self, driver):
+        self.driver = driver
+
+    def accept_cookies(self):
+        try:
+            cookie_btn = WebDriverWait(self.driver, 5).until(
+                EC.element_to_be_clickable((By.ID, "wt-cli-accept-all-btn"))
+            )
+            cookie_btn.click()
+        except:
+            pass  # Button may not be visible
+
+    def go_to_homepage(self):
+        self.driver.get("https://useinsider.com/")
+
+    def get_title(self):
+        return self.driver.title
+
+    def click_company_tab(self):
+        company_tab = self.driver.find_element(
+            By.XPATH, "//a[normalize-space()='Company' or contains(text(),'Company')]"
+        )
+        company_tab.click()
+
+    def is_careers_link_visible(self):
+        return WebDriverWait(self.driver, 10).until(
+            EC.presence_of_element_located((By.XPATH, "//a[normalize-space()='Careers']"))
+>>>>>>> a511a1b (some refactoring activities)
         )
